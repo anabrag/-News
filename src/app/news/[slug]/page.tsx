@@ -263,12 +263,6 @@ export default async function NewsPage({ params }: { params: Promise<{ slug: str
             src={news.image || "/placeholder.svg"}
             alt={news.title}
             className="w-full h-full object-cover"
-            onError={e => {
-              const target = e.target as HTMLImageElement;
-              if (target.src !== window.location.origin + "/placeholder.svg") {
-                target.src = "/placeholder.svg";
-              }
-            }}
           />
         </div>
 
