@@ -22,7 +22,7 @@ const newsData: Record<string, News> = {
     date: "5 de Dezembro, 2025",
     readTime: "5 min de leitura",
     author: "Maria Silva",
-    image: "/bts-kpop-concert-stage.jpg",
+    image: "/images/bts.jpg",
     content: `
       <p>Em uma notícia que emocionou milhões de fãs ao redor do mundo, o BTS anunciou oficialmente seu retorno aos palcos com um novo álbum previsto para 2026. O anúncio foi feito através de um vídeo especial compartilhado nas redes sociais do grupo, mostrando os sete membros reunidos pela primeira vez em mais de dois anos.</p>
 
@@ -54,7 +54,7 @@ const newsData: Record<string, News> = {
     date: "4 de Dezembro, 2025",
     readTime: "4 min de leitura",
     author: "João Santos",
-    image: "/korean-cinema-film-movie.jpg",
+    image: "/images/dorama-sobrenatural.jpg",
     content: `
       <p>A nova série de romance sobrenatural da tvN, "Entre Mundos", estreou com números impressionantes, alcançando 18.2% de audiência nacional em seu episódio de estreia, marcando o maior debut de um drama coreano em 2025.</p>
 
@@ -108,7 +108,7 @@ const newsData: Record<string, News> = {
     date: "2 de Dezembro, 2025",
     readTime: "3 min de leitura",
     author: "Carlos Mendes",
-    image: "/korean-drama-actress-on-set.jpg",
+    image: "/images/squid-game.jpg",
     content: `
       <p>Jung Ho-yeon, que conquistou o mundo com sua atuação como Kang Sae-byeok em "Squid Game", compartilhou detalhes exclusivos sobre as filmagens da aguardada terceira temporada durante entrevista à revista Vogue Korea.</p>
 
@@ -259,7 +259,17 @@ export default async function NewsPage({ params }: { params: Promise<{ slug: str
 
         {/* Featured Image */}
         <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-12">
-          <img src={news.image || "/placeholder.svg"} alt={news.title} className="w-full h-full object-cover" />
+          <img
+            src={news.image || "/placeholder.svg"}
+            alt={news.title}
+            className="w-full h-full object-cover"
+            onError={e => {
+              const target = e.target as HTMLImageElement;
+              if (target.src !== window.location.origin + "/placeholder.svg") {
+                target.src = "/placeholder.svg";
+              }
+            }}
+          />
         </div>
 
         {/* Article Content */}

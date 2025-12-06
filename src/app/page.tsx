@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight, Menu } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   const featuredNews = [
@@ -9,28 +10,28 @@ export default function Home() {
       date: "DEZ 5 2025",
       title: "BTS anuncia retorno triunfal com novo álbum em 2026",
       category: "K-Pop",
-      image: "/bts-kpop-concert-stage.jpg",
+      image: "/images/bts.jpg",
       slug: "bts-anuncia-retorno-triunfal-com-novo-album-em-2026",
     },
     {
       date: "DEZ 4 2025",
       title: "Novo K-Drama de romance sobrenatural quebra recordes de audiência",
       category: "K-Drama",
-      image: "/korean-cinema-film-movie.jpg",
+      image: "/images/dorama-sobrenatural.jpg",
       slug: "novo-kdrama-de-romance-sobrenatural-quebra-recordes-de-audiencia",
     },
     {
       date: "DEZ 3 2025",
       title: "BLACKPINK anuncia turnê mundial com shows no Brasil",
       category: "K-Pop",
-      image: "/blackpink-concert-stage-performance.jpg",
+      image: "/images/blackpink-capa.jpg",
       slug: "blackpink-anuncia-turnê-mundial-com-shows-no-brasil",
     },
     {
       date: "DEZ 2 2025",
       title: "Atriz de 'Squid Game' revela bastidores da 3ª temporada",
       category: "K-Drama",
-      image: "/korean-drama-actress-on-set.jpg",
+      image: "/images/squid-game.jpg",
       slug: "atriz-de-squid-game-revela-bastidores-da-terceira-temporada",
     },
   ]
@@ -145,10 +146,13 @@ export default function Home() {
               </Link>
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-            <img
+            <Image
               src="/images/jungkook-e-winter.jpg"
               alt="K-pop performance"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
           </div>
         </div>
@@ -168,10 +172,12 @@ export default function Home() {
           {featuredNews.map((news, index) => (
             <Link key={index} href={`/news/${news.slug}`} className="group block space-y-4">
               <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-muted">
-                <img
+                <Image
                   src={news.image || "/placeholder.svg"}
                   alt={news.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               <div className="space-y-2">
