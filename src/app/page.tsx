@@ -1,65 +1,324 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { ChevronRight, Menu } from "lucide-react"
 
 export default function Home() {
+  const featuredNews = [
+    {
+      date: "DEZ 5 2025",
+      title: "BTS anuncia retorno triunfal com novo álbum em 2026",
+      category: "K-Pop",
+      image: "/bts-kpop-concert-stage.jpg",
+      slug: "bts-anuncia-retorno-triunfal-com-novo-album-em-2026",
+    },
+    {
+      date: "DEZ 4 2025",
+      title: "Novo K-Drama de romance sobrenatural quebra recordes de audiência",
+      category: "K-Drama",
+      image: "/korean-cinema-film-movie.jpg",
+      slug: "novo-kdrama-de-romance-sobrenatural-quebra-recordes-de-audiencia",
+    },
+    {
+      date: "DEZ 3 2025",
+      title: "BLACKPINK anuncia turnê mundial com shows no Brasil",
+      category: "K-Pop",
+      image: "/blackpink-concert-stage-performance.jpg",
+      slug: "blackpink-anuncia-turnê-mundial-com-shows-no-brasil",
+    },
+    {
+      date: "DEZ 2 2025",
+      title: "Atriz de 'Squid Game' revela bastidores da 3ª temporada",
+      category: "K-Drama",
+      image: "/korean-drama-actress-on-set.jpg",
+      slug: "atriz-de-squid-game-revela-bastidores-da-terceira-temporada",
+    },
+  ]
+
+  const latestNews = [
+    {
+      date: "DEZ 5 2025",
+      title: "NewJeans lança clipe inovador com tecnologia de IA",
+      category: "K-Pop",
+    },
+    {
+      date: "DEZ 5 2025",
+      title: "Remake de 'Boys Over Flowers' confirmado para 2026",
+      category: "K-Drama",
+    },
+    {
+      date: "DEZ 4 2025",
+      title: "SEVENTEEN bate recorde de vendas com novo álbum",
+      category: "K-Pop",
+    },
+    {
+      date: "DEZ 4 2025",
+      title: "Netflix anuncia 10 novos K-Dramas originais",
+      category: "K-Drama",
+    },
+    {
+      date: "DEZ 3 2025",
+      title: "Stray Kids conquista topo da Billboard pela quarta vez",
+      category: "K-Pop",
+    },
+    {
+      date: "DEZ 3 2025",
+      title: "Ator de 'Aterrissagem de Emergência no Amor' estrela novo thriller",
+      category: "K-Drama",
+    },
+  ]
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 py-6">
+          <div className="flex items-center justify-between">
+            <Button variant="ghost" size="icon" className="lg:hidden">
+              <Menu className="h-5 w-5" />
+            </Button>
+
+            <Link href="/" className="text-3xl font-serif tracking-tight text-foreground">
+              한국 News
+            </Link>
+
+            <nav className="hidden lg:flex items-center gap-8 text-sm">
+              <Link href="/k-pop" className="text-muted-foreground hover:text-foreground transition-colors">
+                K-Pop
+              </Link>
+              <Link href="/k-drama" className="text-muted-foreground hover:text-foreground transition-colors">
+                K-Drama
+              </Link>
+              <Link href="/artistas" className="text-muted-foreground hover:text-foreground transition-colors">
+                Artistas
+              </Link>
+              <Link href="/grupos" className="text-muted-foreground hover:text-foreground transition-colors">
+                Grupos
+              </Link>
+              <Link href="/series" className="text-muted-foreground hover:text-foreground transition-colors">
+                Séries
+              </Link>
+            </nav>
+
+            <Link href="/planos">
+              <Button variant="outline" size="sm" className="hidden lg:inline-flex bg-transparent">
+                Assinar
+              </Button>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </header>
+
+      {/* Hero Section */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <Badge variant="secondary" className="mb-4">
+              Destaque do Dia
+            </Badge>
+            <h1 className="text-5xl lg:text-7xl font-serif tracking-tight text-balance mb-6">O Coração da Hallyu</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 text-pretty">
+              Sua fonte definitiva para tudo sobre K-Pop e K-Drama. Notícias exclusivas, bastidores, entrevistas e as
+              últimas novidades do mundo do entretenimento coreano.
+            </p>
+            <Button size="lg" className="group">
+              Explorar Conteúdo
+              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+            <img
+              src="/k-pop-idol-group-performing-on-stage-with-dramatic.jpg"
+              alt="K-pop performance"
+              className="w-full h-full object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Featured News Grid */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="flex items-center justify-between mb-12">
+          <h2 className="text-3xl font-serif tracking-tight">Em Destaque</h2>
+          <Link href="#" className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2">
+            Ver todas
+            <ChevronRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {featuredNews.map((news, index) => (
+            <Link key={index} href={`/news/${news.slug}`} className="group block space-y-4">
+              <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-muted">
+                <img
+                  src={news.image || "/placeholder.svg"}
+                  alt={news.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-4 text-xs text-muted-foreground uppercase tracking-wider">
+                  <time>{news.date}</time>
+                  <Badge variant="outline" className="text-xs">
+                    {news.category}
+                  </Badge>
+                </div>
+                <h3 className="text-2xl font-serif tracking-tight leading-tight group-hover:text-muted-foreground transition-colors text-balance">
+                  {news.title}
+                </h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Latest News List */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="bg-accent/30 rounded-2xl p-8 lg:p-12">
+          <h2 className="text-3xl font-serif tracking-tight mb-8">Últimas Notícias</h2>
+          <div className="space-y-6">
+            {latestNews.map((news, index) => (
+              <Link
+                key={index}
+                href="#"
+                className="group flex items-center justify-between py-6 border-b border-border last:border-0 hover:px-4 transition-all"
+              >
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground uppercase tracking-wider">
+                    <time>{news.date}</time>
+                    <span className="text-accent-foreground/50">{news.category}</span>
+                  </div>
+                  <h3 className="text-xl font-serif tracking-tight leading-tight group-hover:text-muted-foreground transition-colors text-pretty">
+                    {news.title}
+                  </h3>
+                </div>
+                <ChevronRight className="h-5 w-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <h2 className="text-3xl font-serif tracking-tight mb-8">Explore por Categoria</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {["Girl Groups", "Boy Bands", "Romance", "Thriller", "Histórico", "Fantasia", "Comebacks", "Atores"].map(
+            (category) => (
+              <Link
+                key={category}
+                href="#"
+                className="group relative aspect-square rounded-lg overflow-hidden bg-muted hover:shadow-lg transition-shadow"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white text-lg font-serif tracking-tight">{category}</span>
+                </div>
+              </Link>
+            ),
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="bg-primary text-primary-foreground rounded-2xl p-8 lg:p-12 text-center">
+          <h2 className="text-3xl lg:text-4xl font-serif tracking-tight mb-4">Não perca nenhum comeback ou estreia</h2>
+          <p className="text-primary-foreground/80 mb-8 text-lg">
+            Receba as últimas notícias de K-Pop e K-Drama direto no seu email
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Seu email"
+              className="flex-1 px-4 py-3 rounded-lg bg-background text-foreground border-0 focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+            <Button size="lg" variant="secondary">
+              Inscrever
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="font-serif text-xl mb-4">한국 News</h3>
+              <p className="text-sm text-muted-foreground">Conectando você ao mundo do K-Pop e K-Drama desde 2025.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Conteúdo</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    K-Pop News
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    K-Drama Reviews
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Entrevistas
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Bastidores
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Sobre
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Contato
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Anuncie
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Siga-nos</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Instagram
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    Twitter
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground">
+                    YouTube
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
+            <p>© 2025 한국 News. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
-  );
+  )
 }
