@@ -129,6 +129,22 @@ const newsData: Record<string, News> = {
     `,
     tags: ["Squid Game", "K-Drama", "Netflix", "Jung Ho-yeon", "Bastidores"],
   },
+  "rumores-de-namoro-entre-jungkook-e-winter-cenario-atual": {
+    title: "Jungkook e Winter voltam ao centro das atenções após nova onda de especulações sobre possível relacionamento",
+    category: "K-Pop",
+    date: "6 de Dezembro, 2025",
+    readTime: "6 min de leitura",
+    author: "Redação 한국 News",
+    image: "/images/jungkook-e-winter.jpg",
+    content: `
+      <p>O início de dezembro reacendeu discussões no meio do entretenimento coreano após internautas destacarem uma série de coincidências envolvendo Jungkook, integrante do BTS, e Winter, membro do aespa. A movimentação começou quando capturas recentes de Jungkook em um programa exibiram uma tatuagem que alguns fãs consideraram semelhante à vista anteriormente em Winter. A comparação rapidamente circulou em fóruns coreanos e redes sociais, impulsionando novas teorias sobre uma possível proximidade entre os artistas.</p>
+      <p>A partir daí, outras coincidências foram retomadas pelo público, como o uso de acessórios parecidos em diferentes ocasiões, itens semelhantes durante apresentações e lembranças antigas de que Jungkook teria comparecido a um concerto do aespa durante um período de folga. Esses elementos voltaram a circular com força e ganharam espaço em discussões de grande volume, tanto em plataformas coreanas quanto internacionais.</p>
+      <p>Apesar de parte do público encarar as observações como possíveis indícios, há quem considere a repercussão exagerada, sobretudo pela frequência com que artistas da indústria compartilham tendências de moda, objetos de marca semelhante e círculos profissionais próximos. Ainda assim, o tema se manteve entre os mais comentados no cenário do K-pop nos últimos dias, alimentado por análises, debates e recolhimento de supostas “pistas” por usuários.</p>
+      <p>Como de costume em situações desse tipo, a curiosidade do público cresce na mesma proporção em que há silêncio oficial. Até o momento, não houve manifestação de nenhuma das duas empresas responsáveis pelos artistas.</p>
+      <p>São rumores e nenhuma empresa confirmou nada até agora.</p>
+    `,
+    tags: ["Jungkook", "Winter", "K-Pop", "Rumores", "aespa", "BTS"],
+  },
 }
 
 export default async function NewsPage({ params }: { params: Promise<{ slug: string }> }) {

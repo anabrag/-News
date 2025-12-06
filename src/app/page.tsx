@@ -40,32 +40,49 @@ export default function Home() {
       date: "DEZ 5 2025",
       title: "NewJeans lança clipe inovador com tecnologia de IA",
       category: "K-Pop",
+      slug: "newjeans-lanca-clipe-inovador-com-tecnologia-de-ia",
     },
     {
       date: "DEZ 5 2025",
       title: "Remake de 'Boys Over Flowers' confirmado para 2026",
       category: "K-Drama",
+      slug: "remake-de-boys-over-flowers-confirmado-para-2026",
     },
     {
       date: "DEZ 4 2025",
       title: "SEVENTEEN bate recorde de vendas com novo álbum",
       category: "K-Pop",
+      slug: "seventeen-bate-recorde-de-vendas-com-novo-album",
     },
     {
       date: "DEZ 4 2025",
       title: "Netflix anuncia 10 novos K-Dramas originais",
       category: "K-Drama",
+      slug: "netflix-anuncia-10-novos-kdramas-originais",
     },
     {
       date: "DEZ 3 2025",
       title: "Stray Kids conquista topo da Billboard pela quarta vez",
       category: "K-Pop",
+      slug: "stray-kids-conquista-topo-da-billboard-pela-quarta-vez",
     },
     {
       date: "DEZ 3 2025",
       title: "Ator de 'Aterrissagem de Emergência no Amor' estrela novo thriller",
       category: "K-Drama",
+      slug: "ator-de-aterrissagem-de-emergencia-no-amor-estrela-novo-thriller",
     },
+  ]
+
+  const categories = [
+    { name: "Girl Groups", slug: "girl-groups" },
+    { name: "Boy Bands", slug: "boy-bands" },
+    { name: "Romance", slug: "romance" },
+    { name: "Thriller", slug: "thriller" },
+    { name: "Histórico", slug: "historico" },
+    { name: "Fantasia", slug: "fantasia" },
+    { name: "Comebacks", slug: "comebacks" },
+    { name: "Atores", slug: "atores" },
   ]
 
   return (
@@ -116,19 +133,20 @@ export default function Home() {
             <Badge variant="secondary" className="mb-4">
               Destaque do Dia
             </Badge>
-            <h1 className="text-5xl lg:text-7xl font-serif tracking-tight text-balance mb-6">O Coração da Hallyu</h1>
+            <h1 className="text-5xl lg:text-7xl font-serif tracking-tight text-balance mb-6">Rumores de namoro entre Jungkook e Winter ganham força</h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 text-pretty">
-              Sua fonte definitiva para tudo sobre K-Pop e K-Drama. Notícias exclusivas, bastidores, entrevistas e as
-              últimas novidades do mundo do entretenimento coreano.
+              No início de dezembro de 2025, a especulação sobre um possível romance entre Jungkook (do BTS) e Winter (da aespa) ressurgiu com força nas redes e fóruns de fãs.
             </p>
-            <Button size="lg" className="group">
-              Explorar Conteúdo
-              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+              <Link href="/news/rumores-de-namoro-entre-jungkook-e-winter-cenario-atual">
+                <Button size="lg" className="group flex items-center gap-2">
+                  Veja na íntegra
+                  <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
             <img
-              src="/k-pop-idol-group-performing-on-stage-with-dramatic.jpg"
+              src="/images/jungkook-e-winter.jpg"
               alt="K-pop performance"
               className="w-full h-full object-cover"
             />
@@ -180,7 +198,7 @@ export default function Home() {
             {latestNews.map((news, index) => (
               <Link
                 key={index}
-                href="#"
+                href={`/news/${news.slug}`}
                 className="group flex items-center justify-between py-6 border-b border-border last:border-0 hover:px-4 transition-all"
               >
                 <div className="flex-1 space-y-2">
@@ -203,20 +221,18 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 py-16">
         <h2 className="text-3xl font-serif tracking-tight mb-8">Explore por Categoria</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["Girl Groups", "Boy Bands", "Romance", "Thriller", "Histórico", "Fantasia", "Comebacks", "Atores"].map(
-            (category) => (
-              <Link
-                key={category}
-                href="#"
-                className="group relative aspect-square rounded-lg overflow-hidden bg-muted hover:shadow-lg transition-shadow"
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white text-lg font-serif tracking-tight">{category}</span>
-                </div>
-              </Link>
-            ),
-          )}
+          {categories.map((category) => (
+            <Link
+              key={category.slug}
+              href={`/categoria/${category.slug}`}
+              className="group relative aspect-square rounded-lg overflow-hidden bg-muted hover:shadow-lg transition-shadow"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-white text-lg font-serif tracking-tight">{category.name}</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
